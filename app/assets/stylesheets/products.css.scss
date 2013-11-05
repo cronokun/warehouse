@@ -1,3 +1,45 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form {
+  .field {
+    label:after {
+      content: ":";
+    }
+
+    label {
+      display: inline-block;
+      width: 60px;
+    }
+
+    input.long {
+      width: 150px;
+    }
+
+    input.short {
+      width: 80px;
+    }
+  }
+
+  .field-group {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  thead {
+    background-color: #F5F6F7;
+  }
+
+  tr {
+    border: 1px solid #F0F0F0;
+  }
+
+  th, td {
+    padding: 5px 10px;
+  }
+}

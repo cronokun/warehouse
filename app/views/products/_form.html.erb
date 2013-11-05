@@ -12,31 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_number %><br>
-    <%= f.number_field :product_number %>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Product name", class: "long" %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :product_number %>
+    <%= f.text_field :product_number, placeholder: "ABC 123400-4567-89", class: "long" %>
+  </div>
+
+  <div class="field-group">
+    <div class="field">
+      <%= f.label :width %>
+      <%= f.number_field :width, placeholder: "in millimeters", class: "short" %>
+    </div>
+    <div class="field">
+      <%= f.label :height %>
+      <%= f.number_field :height, placeholder: "in millimeters", class: "short" %>
+    </div>
+    <div class="field">
+      <%= f.label :depth %>
+      <%= f.number_field :depth, placeholder: "in millimeters", class: "short" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.number_field :weight, placeholder: "in grams", class: "short" %>
   </div>
   <div class="field">
-    <%= f.label :width %><br>
-    <%= f.number_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label :height %><br>
-    <%= f.number_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label :depth %><br>
-    <%= f.number_field :depth %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.number_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :stock_level %><br>
+    <%= f.label :stock_level %>
     <%= f.number_field :stock_level %>
   </div>
   <div class="actions">

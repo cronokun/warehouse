@@ -3,15 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Product number</th>
       <th>Name</th>
-      <th>Width</th>
-      <th>Height</th>
-      <th>Depth</th>
-      <th>Weight</th>
+      <th>Product number</th>
+      <th>Demensions (WxHxD), mm</th>
+      <th>Weight, g</th>
       <th>Stock level</th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -19,16 +15,16 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.product_number %></td>
         <td><%= product.name %></td>
-        <td><%= product.width %></td>
-        <td><%= product.height %></td>
-        <td><%= product.depth %></td>
+        <td><%= product.product_number %></td>
+        <td><%= "#{product.width}x#{product.height}x#{product.depth}" %></td>
         <td><%= product.weight %></td>
         <td><%= product.stock_level %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', product %> | 
+          <%= link_to 'Edit', edit_product_path(product) %> | 
+          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
       </tr>
     <% end %>
   </tbody>
