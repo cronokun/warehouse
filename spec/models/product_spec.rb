@@ -52,5 +52,16 @@ describe Product do
       product = FactoryGirl.build(:product, stock_level: 0)
       expect(product).not_to be_valid
     end
+
+    it "is invalid with non-uniq product number" do
+      product_x = FactoryGirl.create(:product, product_number: "XXX 1234000-5678-90")
+      product_y = FactoryGirl.build(:product, product_number: "XXX 1234000-5678-90")
+      expect(product_y).not_to be_valid
+    end
+
+    it "is invalid without name" do
+      product = FactoryGirl.build(:product, name: nil)
+      expect(product).not_to be_nil
+    end
   end
 end
