@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104151543) do
+ActiveRecord::Schema.define(version: 20131105183649) do
 
   create_table "products", force: true do |t|
-    t.integer  "product_number"
+    t.string   "product_number"
     t.string   "name"
     t.integer  "width"
     t.integer  "height"
@@ -24,5 +24,7 @@ ActiveRecord::Schema.define(version: 20131104151543) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["product_number"], name: "index_products_on_product_number"
 
 end
