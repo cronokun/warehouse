@@ -4,12 +4,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.decorate
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = @product.decorate
   end
 
   # GET /products/new

@@ -5,7 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Product number</th>
-      <th>Demensions (WxHxD), mm</th>
+      <th>Dimension (WxHxD), mm</th>
       <th>Weight, g</th>
       <th>Stock level</th>
       <th></th>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.product_number %></td>
-        <td><%= "#{product.width}x#{product.height}x#{product.depth}" %></td>
+        <td><%= product.dimension %></td>
         <td><%= product.weight %></td>
         <td><%= product.stock_level %></td>
         <td>
