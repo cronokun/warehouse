@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :volume %><br>
-    <%= f.number_field :volume %>
+    <%= f.label :volume %>
+    <%= f.number_field :volume, placeholder: "in liters" %>
   </div>
   <div class="actions">
     <%= f.submit %>
