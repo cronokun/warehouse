@@ -1,0 +1,26 @@
+module Packer
+  class Box
+    attr_reader :volume, :products
+
+    def initialize(volume_in_liters)
+      @products = []
+      @volume = volume_in_liters * 1_000_000
+    end
+
+    def volume_in_liters
+      volume / 1_000_000
+    end
+
+    def add_product(product)
+      products.push product if product.volume + total_volume <= volume
+    end
+
+    def move_products_to(other_box)
+      products.each { |prd| other_box.add_product(prd) }
+    end
+
+    def total_volume
+      products.inject(0) { |sum, prd| sum += prd.volume }
+    end
+  end
+end
