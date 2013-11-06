@@ -64,4 +64,15 @@ describe Product do
       expect(product).not_to be_nil
     end
   end
+
+  describe "#volume" do
+    it "returns product volume in cubic millimeters" do
+      product = FactoryGirl.build(:product,
+                                  width: 10,
+                                  height: 10,
+                                  depth: 10)
+
+      expect(product.volume).to eq 1000
+    end
+  end
 end
