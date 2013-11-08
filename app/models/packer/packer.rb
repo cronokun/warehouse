@@ -34,17 +34,6 @@ module Packer
       self
     end
 
-    # prety print packed boxes for better debugging
-    def pp
-      products_total_volume = products_with_stock.inject(0) { |sum, (prd, stock)| sum += prd.volume * stock } / 1_000_000
-
-      puts "Put #{products_total_volume} L of products in #{available_box_volumes.join(', ')} L  boxes:"
-      boxes.each_with_index do |box, i|
-        puts "#{i+1}:  #{box.total_volume / 1_000_000} of #{box.volume_in_liters}"
-      end
-      puts
-    end
-
     private
 
     def add_products_to_box(box)
