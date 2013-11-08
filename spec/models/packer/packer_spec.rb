@@ -5,9 +5,9 @@ describe Packer::Packer do
   let(:medium_box) { FactoryGirl.build(:box, volume: 3) }
   let(:big_box)    { FactoryGirl.build(:box, volume: 5) }
 
-  let(:small_prd)  { double("small product", volume: 100_000) }
-  let(:medium_prd) { double("small product", volume: 300_000) }
-  let(:big_prd)    { double("small product", volume: 500_000) }
+  let(:small_prd)  { double("small product",  volume: 100_000) }
+  let(:medium_prd) { double("medium product", volume: 300_000) }
+  let(:big_prd)    { double("big product",    volume: 500_000) }
 
   describe ".initialize" do
     it "assigns types of boxes to @available_box_volumes" do
@@ -82,16 +82,17 @@ describe Packer::Packer do
     end
 
     context "with several products" do
-    end
+      it "packs smaller products first" do
+        packer = Packer::Packer.new(
+          boxes: [small_box, medium_box, big_box].map(&:volume),
+          products: { medium_prd => 10, big_prd => 10, small_prd => 10 }
+        ).pack!
 
-    context "debugging" do
-      xit "should pass" do
-        10.step(200, 10) do |vol|
-        Packer::Packer.new(
-          boxes: [1,2,3,5,10],
-          products: { small_prd => vol }
-        ).pack!.pp
-        end
+        expect(packer.boxes.size).to eq 2
+        expect(packer.boxes[0].volume_in_liters).to eq 5
+        expect(packer.boxes[0].products_with_stock).to eq({small_prd => 10, medium_prd => 10, big_prd => 2})
+        expect(packer.boxes[1].volume_in_liters).to eq 5
+        expect(packer.boxes[1].products_with_stock).to eq({big_prd => 8})
       end
     end
 
