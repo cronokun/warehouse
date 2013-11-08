@@ -1,0 +1,25 @@
+<h1>Pack products</h1>
+
+<%= form_tag "/pack" do |form| %>
+  <div>
+    <%= label_tag "Select products:" %><br />
+    <ul>
+      <% @products.each_with_index do |product, i| %>
+      <li>
+        <%= select_tag "products[][id]", options_from_collection_for_select(@products, "id", "name", product.id), id: "products_#{i+1}_id" %>
+        <%= number_field_tag "products[][stock]", 0, min: 0, max: product.stock_level, id: "products_#{i+1}_stock" %>&nbsp;
+        <em>(<%= product.stock_level %> in the stock)</em>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <%= label_tag "Select box types:" %><br />
+    <%= select_tag "boxes", options_from_collection_for_select(@boxes, "id", "name"), multiple: true %>
+  </div>
+
+  <div>
+    <%= submit_tag "Pack!" %>
+  </div>
+<% end %>
