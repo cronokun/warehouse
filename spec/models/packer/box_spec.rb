@@ -37,6 +37,15 @@ describe Packer::Box do
     end
   end
 
+  describe "#change_volume" do
+    it "changes box volume" do
+      box = Packer::Box.new(1)
+      expect {
+        box.change_volume(5)
+      }.to change(box, :volume).to(5_000_000)
+    end
+  end
+
   describe "#total_volume" do
     it "returns total volume of all products stored in the box" do
       box = Packer::Box.new(1)

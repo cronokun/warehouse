@@ -15,8 +15,8 @@ module Packer
       products.push product if product.volume + total_volume <= volume
     end
 
-    def move_products_to(other_box)
-      products.each { |prd| other_box.add_product(prd) }
+    def change_volume(new_volume)
+      @volume = new_volume * 1_000_000
     end
 
     def total_volume
