@@ -1,14 +1,10 @@
 <h1>Packed boxes</h1>
 
 <ol>
-  <% @boxes.each_with_index do |box| %>
+  <% PackedBoxDecorator.decorate_collection(@boxes).each do |box| %>
     <li>
-      Box filled <%= box.total_volume / 1_000_000.0 %> of <%= box.volume_in_liters %> liters<br />
-      <ul>
-      <% box.products_with_stock.each do |product, stock| %>
-        <li><%= stock %>&nbsp;&times;&nbsp;<%= product.name %></li>
-      <% end %>
-      </ul>
+      <%= box.filled_volume %>
+      <%= box.list_of_products %>
     </li>
   <% end %>
 </ol>
