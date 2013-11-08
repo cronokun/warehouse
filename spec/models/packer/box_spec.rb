@@ -30,6 +30,12 @@ describe Packer::Box do
       }.to change(box.products, :size)
     end
 
+    it "changes filled volume" do
+      expect {
+        box.add_product double(volume: 5_000)
+      }.to change(box, :filled_volume).by(5_000)
+    end
+
     it "returns nil when there is no room in the box" do
       expect {
         box.add_product double(volume: 2_000_000)
@@ -37,14 +43,12 @@ describe Packer::Box do
     end
   end
 
-  describe "#total_volume" do
-    it "returns total volume of all products stored in the box" do
+  describe "#change_volume" do
+    it "changes box volume" do
       box = Packer::Box.new(1)
-      box.add_product double(volume: 1_000)
-      box.add_product double(volume: 2_000)
-      box.add_product double(volume: 3_000)
-
-      expect(box.total_volume).to eq 6_000
+      expect {
+        box.change_volume(5)
+      }.to change(box, :volume).to(5_000_000)
     end
   end
 
@@ -55,11 +59,11 @@ describe Packer::Box do
       medium_prd = double(volume: 200)
       big_prd = double(volume: 500)
 
-      100.times { box.add_product(small_prd) }
-      200.times { box.add_product(medium_prd) }
-      100.times { box.add_product(big_prd) }
+      1000.times { box.add_product(small_prd) }
+      2000.times { box.add_product(medium_prd) }
+      1000.times { box.add_product(big_prd) }
 
-      expect(box.products_with_stock).to eq({ small_prd => 100, medium_prd => 200, big_prd => 100 })
+      expect(box.products_with_stock).to eq({ small_prd => 1000, medium_prd => 2000, big_prd => 1000 })
     end
   end
 end

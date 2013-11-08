@@ -51,10 +51,7 @@ module Packer
     end
 
     def try_bigger_box(smaller_box, new_volume)
-      box = ::Packer::Box.new(new_volume)
-      smaller_box.move_products_to(box)
-      boxes.delete(smaller_box)
-      boxes.push(box)
+      smaller_box.change_volume(new_volume)
     end
   end
 end
