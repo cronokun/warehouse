@@ -47,4 +47,19 @@ describe Packer::Box do
       expect(box.total_volume).to eq 6_000
     end
   end
+
+  describe "#products_with_stock" do
+    it "returns list of products with stock levels" do
+      box = Packer::Box.new(1)
+      small_prd = double(volume: 100)
+      medium_prd = double(volume: 200)
+      big_prd = double(volume: 500)
+
+      100.times { box.add_product(small_prd) }
+      200.times { box.add_product(medium_prd) }
+      100.times { box.add_product(big_prd) }
+
+      expect(box.products_with_stock).to eq({ small_prd => 100, medium_prd => 200, big_prd => 100 })
+    end
+  end
 end

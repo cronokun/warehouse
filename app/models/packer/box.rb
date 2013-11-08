@@ -22,5 +22,11 @@ module Packer
     def total_volume
       products.inject(0) { |sum, prd| sum += prd.volume }
     end
+
+    def products_with_stock
+      Hash.new.tap do |hash|
+        products.uniq.each { |prd| hash[prd] = products.count(prd) }
+      end
+    end
   end
 end
