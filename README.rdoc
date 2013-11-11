@@ -3,6 +3,36 @@
 Technical challenge for Michael Litton ApoEx.
 
 
+== APPLICATION SETUP
+
+The project uses Ruby 2.0 (should be fine on Ruby 1.9) and Rails 4.0.
+
+To run project, follow this howto:
+
+1. Clone repository
+
+    git clone https://github.com/cronokun/warehouse.git
+    cd path/to/warehous
+
+2. Install gems
+
+    bundle install
+
+3. Setup database
+
+    rake db:create:all
+    rake db:migrate
+    rake db:seed
+
+4. Run rails server
+
+    rails server
+
+=== How to run test
+
+    rake db:migrate RAILS_ENV=test
+    rspec
+
 == TODO
 
 1. Create a Ruby on Rails application that exposes an API for creating a products and boxes as well as a simple GUI for adding them
