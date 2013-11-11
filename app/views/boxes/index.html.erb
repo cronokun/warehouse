@@ -1,12 +1,10 @@
 <h1>Listing boxes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Volume</th>
-      <th></th>
-      <th></th>
+      <th>Volume (in liters)</th>
       <th></th>
     </tr>
   </thead>
@@ -16,9 +14,11 @@
       <tr>
         <td><%= box.name %></td>
         <td><%= box.volume %></td>
-        <td><%= link_to 'Show', box %></td>
-        <td><%= link_to 'Edit', edit_box_path(box) %></td>
-        <td><%= link_to 'Destroy', box, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', box %>&nbsp;
+          <%= link_to 'Edit', edit_box_path(box) %>&nbsp;
+          <%= link_to 'Destroy', box, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Box', new_box_path %>
+<%= link_to 'Add New Box', new_box_path, class: 'btn btn-primary' %>
