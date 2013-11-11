@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <%= link_to "Warehouse", "/", class: "navbar-brand" %>
 
-<%= yield %>
+      <%= NavBar.render(request: request) do |nav|
+            nav.item "Products", products_path
+            nav.item "Boxes", boxes_path
+            nav.item "Pack products in boxes!", new_pack_path
+          end %>
 
+    </div>
+  </div>
+  <%= yield %>
+</div>
 </body>
 </html>
