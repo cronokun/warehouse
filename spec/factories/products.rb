@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   sequence :product_number do |n|
     "ABC #{rand(100..999)}#{n}00-#{rand(1000..9999)}-#{rand(10..99)}"
