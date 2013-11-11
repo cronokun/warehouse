@@ -1,5 +1,7 @@
 <h1>Packed boxes</h1>
 
+<p class="lead">Here is the list of boxes we've packed for you!</p>
+
 <ol>
   <% PackedBoxDecorator.decorate_collection(@boxes).each do |box| %>
     <li>
@@ -9,4 +11,4 @@
   <% end %>
 </ol>
 
-<%= link_to "Pack more", new_pack_path %>
+<%= link_to "Pack more", new_pack_path, class: "btn btn-default" %>
