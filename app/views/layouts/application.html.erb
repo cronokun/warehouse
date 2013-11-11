@@ -10,7 +10,7 @@
 <div class="container">
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-      <%= link_to "Warehouse", "/", class: "navbar-brand" %>
+      <%= link_to "Warehouse", root_path, class: "navbar-brand" %>
 
       <%= NavBar.render(request: request) do |nav|
             nav.item "Products", products_path
