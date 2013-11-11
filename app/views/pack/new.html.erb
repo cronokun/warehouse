@@ -1,25 +1,35 @@
 <h1>Pack products</h1>
 
-<%= form_tag "/pack" do |form| %>
-  <div>
+<%= form_tag "/pack"  do |form| %>
+  <div class="form-group">
     <%= label_tag "Select products:" %><br />
-    <ul>
+    <ul class="list-unstyled">
       <% @products.each_with_index do |product, i| %>
-      <li>
-        <%= select_tag "products[][id]", options_from_collection_for_select(@products, "id", "name", product.id), id: "products_#{i+1}_id" %>
-        <%= number_field_tag "products[][stock]", 0, min: 0, max: product.stock_level, id: "products_#{i+1}_stock" %>&nbsp;
-        <em>(<%= product.stock_level %> in the stock)</em>
+      <li class="row">
+        <div class="col-xs-2">
+          <%= select_tag "products[][id]",
+                         options_from_collection_for_select(@products, "id", "name", product.id),
+                         id: "products_#{i+1}_id",
+                         class: "form-control" %>
+        </div>
+
+        <div class="col-xs-2">
+          <%= number_field_tag "products[][stock]", 0, min: 0, max: product.stock_level,
+                               id: "products_#{i+1}_stock",
+                               class: "form-control col-xs-2" %>&nbsp;
+          <em>(<%= product.stock_level %> in the stock)</em>
+        </div>
       </li>
       <% end %>
     </ul>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= label_tag "Select box types:" %><br />
-    <%= select_tag "boxes", options_from_collection_for_select(@boxes, "id", "name"), multiple: true %>
+    <%= select_tag "boxes", options_from_collection_for_select(@boxes, "id", "name"), multiple: true, class: "form-control" %>
   </div>
 
   <div>
-    <%= submit_tag "Pack!" %>
+    <%= submit_tag "Pack!", class: "btn btn-default" %>
   </div>
 <% end %>
