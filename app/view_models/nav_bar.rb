@@ -20,8 +20,6 @@ class NavBar
 
   def item(name, url)
     @items.push NavBarItem.new(name, url)
-    puts ">" * 80
-    puts url.inspect
   end
 
   def self.render(opts = {})
